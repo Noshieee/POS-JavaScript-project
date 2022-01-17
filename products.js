@@ -52,6 +52,7 @@ function readProducts(products) {
         <img src="${product.img}" class="card-img-top" alt="${product.title}">
         <div class="card-body">
           <h5 class="card-title">${product.title}</h5>
+          <h5 class="card-category">${product.category}</h5>
           <p class="card-text">R${product.price}</p>
           <div class="d-flex mb-3">
             <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
@@ -114,9 +115,9 @@ function readProducts(products) {
                           name="editCategory${position}"
                           id="editCategory${position}"
                         >
-                          <option value="Fruit">Fruit</option>
-                          <option value="Vegetables">Vegetables</option>
-                          <option value="Meat">Meat</option>
+                          <option value="Clothing">Clothing</option>
+                          <option value="Footwear">Footwork</option>
+                          <option value="Accessories">Accessories</option>
                         </select>
                       </div>
                       <div class="mb-3">
@@ -259,17 +260,15 @@ function sortCategory() {
   let category = document.querySelector("#sortCategory").value;
 
   if (category == "All") {
-    readProducts(products);
-    return;
+   return readProducts(products);
   }
 
-  let filteredProducts = products.filter((product) => {
-    product.category == category;
-    return;
+  let sortedCategoryProducts = products.filter((product) => {
+   return product.category == category;
   });
 
-  readProducts(filteredProducts);
-  console.log(filteredProducts);
+  readProducts(sortedCategoryProducts);
+  console.log(sortedCategoryProducts);
 }
 
 // SORT BY NAME
